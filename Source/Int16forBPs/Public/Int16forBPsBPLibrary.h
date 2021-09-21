@@ -6,7 +6,7 @@
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "Int16forBPsBPLibrary.generated.h"
 
-USTRUCT(BlueprintType, DisplayName = "Integer16")
+USTRUCT(BlueprintType, DisplayName = "Integer16", ShortToolTip = "16 Bit Integer Number")
 struct FInt16_bp
 {
 	GENERATED_BODY()
@@ -104,10 +104,10 @@ class UInt16forBPsBPLibrary : public UBlueprintFunctionLibrary
 
 	#pragma region Int16 Arithmetics
 
-	UFUNCTION(BlueprintPure, meta = (DisplayName = "Make Integer16", CompactNodeTitle = "»"), Category = "Math|Int16")
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Make Integer16", CompactNodeTitle = "ï¿½"), Category = "Math|Int16")
 	static FInt16_bp Make16BitInt(uint8 A, uint8 B);
 
-	UFUNCTION(BlueprintPure, meta = (DisplayName = "Make Bytes", CompactNodeTitle = "»"), Category = "Math|Int16")
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Make Bytes", CompactNodeTitle = "ï¿½"), Category = "Math|Int16")
 	static void Make8BitInts(FInt16_bp A, uint8& O1, uint8& O2);
 
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "int16 + int", CompactNodeTitle = "+", Keywords = "+ plus"), Category = "Math|Int16")
