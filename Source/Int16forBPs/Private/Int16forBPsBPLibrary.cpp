@@ -1,4 +1,4 @@
-// Copyright Epic Games, Inc. All Rights Reserved.
+// Copyright FranticDreamer. All Rights Reserved.
 
 #include "Int16forBPsBPLibrary.h"
 #include "Int16forBPs.h"

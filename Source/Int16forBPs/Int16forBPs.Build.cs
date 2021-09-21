@@ -1,4 +1,4 @@
-// Some copyright should be here...
+// Copyright FranticDreamer. All Rights Reserved.
 
 using UnrealBuildTool;
 

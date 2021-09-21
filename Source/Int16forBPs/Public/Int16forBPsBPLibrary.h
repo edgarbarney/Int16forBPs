@@ -1,4 +1,4 @@
-// Copyright Epic Games, Inc. All Rights Reserved.
+// Copyright FranticDreamer. All Rights Reserved.
 
 #pragma once
 
@@ -158,7 +158,7 @@ class UInt16forBPsBPLibrary : public UBlueprintFunctionLibrary
 	UFUNCTION(BlueprintPure, meta=(DisplayName = "NotEqual (int16)", CompactNodeTitle = "!=", Keywords = "!= not equal"), Category="Math|Int16")
 	static bool NotEqual_Int16Int16(FInt16_bp A, FInt16_bp B);
 
-	UFUNCTION(BlueprintPure, meta = (DisplayName = "InRange (int16)", Min = "0", Max = "10"), Category = "Math|Int16")
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "InRange (int16)"), Category = "Math|Int16")
 	static bool InRange_Int16Int16(FInt16_bp Value, FInt16_bp Min, FInt16_bp Max, bool InclusiveMin = true, bool InclusiveMax = true);
 
 	UFUNCTION(BlueprintPure, meta=(DisplayName = "Bitwise AND", CompactNodeTitle = "&", Keywords = "& and", CommutativeAssociativeBinaryOperator = "true"), Category="Math|Int16")
@@ -188,7 +188,7 @@ class UInt16forBPsBPLibrary : public UBlueprintFunctionLibrary
 	UFUNCTION(BlueprintPure, meta=(DisplayName = "Clamp (int16)"), Category="Math|Int16")
 	static FInt16_bp Clamp_Int16(FInt16_bp Value, FInt16_bp Min, FInt16_bp Max);
 
-	UFUNCTION(BlueprintPure, meta = (DisplayName = "Wrap (int16)", Min = "0", Max = "100"), Category = "Math|Int16")
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Wrap (int16)"), Category = "Math|Int16")
 	static FInt16_bp Wrap_Int16(FInt16_bp Value, FInt16_bp Min, FInt16_bp Max);
 
 	UFUNCTION(BlueprintPure, meta=(DisplayName = "Absolute (int16)", CompactNodeTitle = "ABS"), Category="Math|Int16")
