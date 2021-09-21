@@ -16,6 +16,7 @@ struct FInt16_bp
 	UPROPERTY(VisibleAnywhere)
 	uint8 unsigned_integer2; //Byte
 
+	/* --	Consturctors	-- */
 	FORCEINLINE FInt16_bp()
 	{
 		unsigned_integer2 = 0;
@@ -34,6 +35,7 @@ struct FInt16_bp
 		unsigned_integer1 = (uint8((uint16)a & 0x00ff));
 	}
 
+	/* --	Arithmetic Operators	-- */
 	FORCEINLINE FInt16_bp operator=(int v)	const
 	{
 		(FInt16_bp)v;
@@ -86,6 +88,7 @@ struct FInt16_bp
 		};
 	}
 
+	/* --	Conversion Operators	-- */
 	FORCEINLINE operator int() 
 	{
 		return (int)((unsigned_integer2 << 8) | unsigned_integer1);
@@ -97,18 +100,7 @@ class UInt16forBPsBPLibrary : public UBlueprintFunctionLibrary
 {
 	GENERATED_BODY()
 
-	/*
-	static int Get16BitInt(FInt16_bp integer16);
-	static void Set16BitInt(FInt16_bp& integer16, int int32ToConvert);
-	*/
-
-	#pragma region Int16 Arithmetics
-
-	UFUNCTION(BlueprintPure, meta = (DisplayName = "Make Integer16", CompactNodeTitle = "»"), Category = "Math|Int16")
-	static FInt16_bp Make16BitInt(uint8 A, uint8 B);
-
-	UFUNCTION(BlueprintPure, meta = (DisplayName = "Make Bytes", CompactNodeTitle = "»"), Category = "Math|Int16")
-	static void Make8BitInts(FInt16_bp A, uint8& O1, uint8& O2);
+	#pragma region Arithmetic Nodes
 
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "int16 + int", CompactNodeTitle = "+", Keywords = "+ plus"), Category = "Math|Int16")
 	static FInt16_bp int16plusint(FInt16_bp A, int32 B);
@@ -197,6 +189,9 @@ class UInt16forBPsBPLibrary : public UBlueprintFunctionLibrary
 	#pragma endregion
 
 public:
+
+	#pragma region Conversion Nodes
+
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "ToInt (int16)", CompactNodeTitle = "->", BlueprintAutocast, Keywords = "cast convert"), Category = "Math|Int16")
 	static int32 Conv_Int16_bpToInt(FInt16_bp integer16);
 
@@ -217,4 +212,12 @@ public:
 
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "ToFloorInt16 (float)", CompactNodeTitle = "->", BlueprintAutocast, Keywords = "toint16 cast convert"), Category = "Math|Int16")
 	static FInt16_bp Conv_FloatToFloorInt16_bp(float floatToConvert);
+
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Make Integer16", CompactNodeTitle = "»"), Category = "Math|Int16")
+	static FInt16_bp Make16BitInt(uint8 A, uint8 B);
+
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Make Bytes", CompactNodeTitle = "»"), Category = "Math|Int16")
+	static void Make8BitInts(FInt16_bp A, uint8& O1, uint8& O2);
+
+	#pragma endregion
 };

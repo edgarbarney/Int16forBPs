@@ -6,22 +6,7 @@
 #include <iostream>
 #include <sstream>
 
-#pragma region Int16
-
-/*
-int UInt16forBPsBPLibrary::Get16BitInt(FInt16_bp integer16)
-{
-	//return int(259U*unsigned_integer1+unsigned_integer2);
-	return (int)((integer16.unsigned_integer2 << 8) | integer16.unsigned_integer1);
-}
-
-void UInt16forBPsBPLibrary::Set16BitInt(FInt16_bp& integer16, int int32ToConvert)
-{
-	uint16 main_integer16 = (uint16)int32ToConvert;
-	integer16.unsigned_integer2 = main_integer16 >> 8;
-	integer16.unsigned_integer1 = uint8(main_integer16 & 0x00ff);
-}
-*/
+#pragma region Conversion Nodes
 
 int32 UInt16forBPsBPLibrary::Conv_Int16_bpToInt(FInt16_bp integer16)
 {
@@ -68,6 +53,10 @@ void UInt16forBPsBPLibrary::Make8BitInts(FInt16_bp A, uint8& O1, uint8& O2)
 	O1 = A.unsigned_integer1;
 	O2 = A.unsigned_integer2;
 }
+
+#pragma endregion
+
+#pragma region Arithmetic Nodes
 
 FInt16_bp UInt16forBPsBPLibrary::int16plusint(FInt16_bp A, int32 B)
 {
@@ -214,4 +203,5 @@ FInt16_bp UInt16forBPsBPLibrary::Abs_Int16(FInt16_bp A)
 }
 
 #pragma endregion
+
 

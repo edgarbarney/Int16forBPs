@@ -6,15 +6,12 @@
 
 void FInt16forBPsModule::StartupModule()
 {
-	// This code will execute after the module is loaded into memory.
-	// The exact timing is specified in the .uplugin file per-module.
+	//No need for now.
 }
 
 void FInt16forBPsModule::ShutdownModule()
 {
-	// This function may be called during shutdown to clean up the module.  
-	// For modules that support dynamic reloading;
-	// We call this function before unloading the module.
+	//Ditto.
 }
 
 #undef LOCTEXT_NAMESPACE
