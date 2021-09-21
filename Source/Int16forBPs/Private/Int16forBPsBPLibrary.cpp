@@ -38,6 +38,11 @@ uint8 UInt16forBPsBPLibrary::Conv_Int16_bpToByte(FInt16_bp InInt)
 	return (uint8)InInt;
 }
 
+FInt16_bp UInt16forBPsBPLibrary::Make16BitInt(uint8 A, uint8 B)
+{
+	return FInt16_bp{ A , B };
+}
+
 FInt16_bp UInt16forBPsBPLibrary::Conv_FloatToInt16_bp(float floatToConvert)
 {
 	return (FInt16_bp)std::roundf(floatToConvert);
@@ -58,15 +63,25 @@ FInt16_bp UInt16forBPsBPLibrary::Conv_IntToInt16_bp(int32 int32ToConvert)
 	return (FInt16_bp)int32ToConvert;
 }
 
-FInt16_bp UInt16forBPsBPLibrary::Make16BitInt(uint8 A, uint8 B)
-{
-	return FInt16_bp{ A , B };
-}
-
 void UInt16forBPsBPLibrary::Make8BitInts(FInt16_bp A, uint8& O1, uint8& O2)
 {
 	O1 = A.unsigned_integer1;
 	O2 = A.unsigned_integer2;
+}
+
+FInt16_bp UInt16forBPsBPLibrary::Conv_StringToInt16_bp(const FString& instring)
+{
+	return (FInt16_bp)FCString::Atoi(*instring);
+}
+
+FInt16_bp UInt16forBPsBPLibrary::Conv_BoolToInt16_bp(bool inbool)
+{
+	return (FInt16_bp)inbool;
+}
+
+FInt16_bp UInt16forBPsBPLibrary::Conv_ByteToInt16_bp(uint8 inbyte)
+{
+	return (FInt16_bp)inbyte;
 }
 
 #pragma endregion

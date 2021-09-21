@@ -307,11 +307,10 @@ public:
 
 	#pragma region Conversion Nodes
 
+	#pragma region From Int16
+
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "ToInt (int16)", CompactNodeTitle = "->", BlueprintAutocast, Keywords = "cast convert"), Category = "Math|Int16")
 	static int32 Conv_Int16_bpToInt(FInt16_bp integer16);
-
-	UFUNCTION(BlueprintPure, meta = (DisplayName = "ToInt16 (integer)", CompactNodeTitle = "->", BlueprintAutocast, Keywords = "cast convert"), Category = "Math|Int16")
-	static FInt16_bp Conv_IntToInt16_bp(int32 int32ToConvert);
 
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "ToString (int16)", CompactNodeTitle = "->", BlueprintAutocast, Keywords = "cast convert"), Category = "Math|Int16")
 	static FString Conv_Int16_bpToString(FInt16_bp integer16);
@@ -328,6 +327,16 @@ public:
 	UFUNCTION(BlueprintPure, meta=(DisplayName = "ToByte (Int16)", CompactNodeTitle = "->", Keywords="cast convert", BlueprintAutocast), Category="Math|Conversions")
 	static uint8 Conv_Int16_bpToByte(FInt16_bp InInt);
 
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Make Integer16", CompactNodeTitle = ">-"), Category = "Math|Int16")
+	static FInt16_bp Make16BitInt(uint8 A, uint8 B);
+
+	#pragma endregion
+
+	#pragma region To Int16
+
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "ToInt16 (integer)", CompactNodeTitle = "->", BlueprintAutocast, Keywords = "cast convert"), Category = "Math|Int16")
+	static FInt16_bp Conv_IntToInt16_bp(int32 int32ToConvert);
+
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "ToRoundInt16 (float)", CompactNodeTitle = "->", BlueprintAutocast, Keywords = "toint16 cast convert"), Category = "Math|Int16")
 	static FInt16_bp Conv_FloatToInt16_bp(float floatToConvert);
 
@@ -337,11 +346,19 @@ public:
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "ToFloorInt16 (float)", CompactNodeTitle = "->", BlueprintAutocast, Keywords = "toint16 cast convert"), Category = "Math|Int16")
 	static FInt16_bp Conv_FloatToFloorInt16_bp(float floatToConvert);
 
-	UFUNCTION(BlueprintPure, meta = (DisplayName = "Make Integer16", CompactNodeTitle = "?"), Category = "Math|Int16")
-	static FInt16_bp Make16BitInt(uint8 A, uint8 B);
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "ToInt16 (string)", CompactNodeTitle = "->", BlueprintAutocast, Keywords = "cast convert"), Category = "Math|Int16")
+	static FInt16_bp Conv_StringToInt16_bp(const FString& instring);
 
-	UFUNCTION(BlueprintPure, meta = (DisplayName = "Make Bytes", CompactNodeTitle = "?"), Category = "Math|Int16")
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "ToInt16 (bool)", CompactNodeTitle = "->", Keywords = "cast convert", BlueprintAutocast), Category = "Math|Int16")
+	static FInt16_bp Conv_BoolToInt16_bp(bool inbool);
+
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "ToInt16 (uint8)", CompactNodeTitle = "->", Keywords = "cast convert", BlueprintAutocast), Category = "Math|Conversions")
+	static FInt16_bp Conv_ByteToInt16_bp(uint8 inint8);
+
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Make Bytes", CompactNodeTitle = "-<"), Category = "Math|Int16")
 	static void Make8BitInts(FInt16_bp A, uint8& O1, uint8& O2);
+
+	#pragma endregion
 
 	#pragma endregion
 };
