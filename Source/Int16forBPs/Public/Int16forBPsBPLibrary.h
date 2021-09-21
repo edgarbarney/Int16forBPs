@@ -104,32 +104,32 @@ class UInt16forBPsBPLibrary : public UBlueprintFunctionLibrary
 
 	#pragma region Int16 Arithmetics
 
-	UFUNCTION(BlueprintPure, meta = (DisplayName = "Make Integer16", CompactNodeTitle = "ï¿½"), Category = "Math|Int16")
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Make Integer16", CompactNodeTitle = "»"), Category = "Math|Int16")
 	static FInt16_bp Make16BitInt(uint8 A, uint8 B);
 
-	UFUNCTION(BlueprintPure, meta = (DisplayName = "Make Bytes", CompactNodeTitle = "ï¿½"), Category = "Math|Int16")
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Make Bytes", CompactNodeTitle = "»"), Category = "Math|Int16")
 	static void Make8BitInts(FInt16_bp A, uint8& O1, uint8& O2);
 
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "int16 + int", CompactNodeTitle = "+", Keywords = "+ plus"), Category = "Math|Int16")
-	static FInt16_bp int16plusint(FInt16_bp A, int B);
+	static FInt16_bp int16plusint(FInt16_bp A, int32 B);
 
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "int16 + int16", CompactNodeTitle = "+", Keywords = "+ plus", CommutativeAssociativeBinaryOperator = "true"), Category = "Math|Int16")
 	static FInt16_bp int16plusint16(FInt16_bp A, FInt16_bp B);
 
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "int16 - int", CompactNodeTitle = "-", Keywords = "- minus"), Category = "Math|Int16")
-	static FInt16_bp int16minusint(FInt16_bp A, int B);
+	static FInt16_bp int16minusint(FInt16_bp A, int32 B);
 
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "int16 - int16", CompactNodeTitle = "-", Keywords = "- minus", CommutativeAssociativeBinaryOperator = "true"), Category = "Math|Int16")
 	static FInt16_bp int16minusint16(FInt16_bp A, FInt16_bp B);
 
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "int16 / int", CompactNodeTitle = "/", Keywords = "/ divide "), Category = "Math|Int16")
-	static FInt16_bp int16divideint(FInt16_bp A, int B = 1);
+	static FInt16_bp int16divideint(FInt16_bp A, int32 B = 1);
 
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "int16 / int16", CompactNodeTitle = "/", Keywords = "/ divide ", CommutativeAssociativeBinaryOperator = "true"), Category = "Math|Int16")
 	static FInt16_bp int16divideint16(FInt16_bp A, FInt16_bp B);
 
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "int16 * int", CompactNodeTitle = "*", Keywords = "* multiply times"), Category = "Math|Int16")
-	static FInt16_bp int16multiplyint(FInt16_bp A, int B);
+	static FInt16_bp int16multiplyint(FInt16_bp A, int32 B);
 
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "int16 * int16", CompactNodeTitle = "*", Keywords = "* multiply times", CommutativeAssociativeBinaryOperator = "true"), Category = "Math|Int16")
 	static FInt16_bp int16multiplyint16(FInt16_bp A, FInt16_bp B);
@@ -138,7 +138,61 @@ class UInt16forBPsBPLibrary : public UBlueprintFunctionLibrary
 	static FInt16_bp int16modulus(FInt16_bp A, FInt16_bp B);
 
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "% (int16 % int)", CompactNodeTitle = "%", Keywords = "% modulus"), Category = "Math|Int16")
-	static FInt16_bp int16modulusint(FInt16_bp A, int B = 1);
+	static FInt16_bp int16modulusint(FInt16_bp A, int32 B = 1);
+
+	UFUNCTION(BlueprintPure, meta=(DisplayName = "int16 < int16", CompactNodeTitle = "<", Keywords = "< less"), Category="Math|Int16")
+	static bool Less_Int16Int16(FInt16_bp A, FInt16_bp B);
+
+	UFUNCTION(BlueprintPure, meta=(DisplayName = "int16 > int16", CompactNodeTitle = ">", Keywords = "> greater"), Category="Math|Int16")
+	static bool Greater_Int16Int16(FInt16_bp A, FInt16_bp B);
+
+	UFUNCTION(BlueprintPure, meta=(DisplayName = "int16 <= int16", CompactNodeTitle = "<=", Keywords = "<= less"), Category="Math|Int16")
+	static bool LessEqual_Int16Int16(FInt16_bp A, FInt16_bp B);
+
+	UFUNCTION(BlueprintPure, meta=(DisplayName = "int16 >= int16", CompactNodeTitle = ">=", Keywords = ">= greater"), Category="Math|Int16")
+	static bool GreaterEqual_Int16Int16(FInt16_bp A, FInt16_bp B);
+
+	UFUNCTION(BlueprintPure, meta=(DisplayName = "Equal (int16)", CompactNodeTitle = "==", Keywords = "== equal"), Category="Math|Int16")
+	static bool EqualEqual_Int16Int16(FInt16_bp A, FInt16_bp B);
+
+	UFUNCTION(BlueprintPure, meta=(DisplayName = "NotEqual (int16)", CompactNodeTitle = "!=", Keywords = "!= not equal"), Category="Math|Int16")
+	static bool NotEqual_Int16Int16(FInt16_bp A, FInt16_bp B);
+
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "InRange (int16)", Min = "0", Max = "10"), Category = "Math|Int16")
+	static bool InRange_Int16Int16(FInt16_bp Value, FInt16_bp Min, FInt16_bp Max, bool InclusiveMin = true, bool InclusiveMax = true);
+
+	UFUNCTION(BlueprintPure, meta=(DisplayName = "Bitwise AND", CompactNodeTitle = "&", Keywords = "& and", CommutativeAssociativeBinaryOperator = "true"), Category="Math|Int16")
+	static FInt16_bp And_Int16Int16(FInt16_bp A, FInt16_bp B);
+
+	UFUNCTION(BlueprintPure, meta=(DisplayName = "Bitwise XOR", CompactNodeTitle = "^", Keywords = "^ xor"), Category="Math|Int16")
+	static FInt16_bp Xor_Int16Int16(FInt16_bp A, FInt16_bp B);
+
+	UFUNCTION(BlueprintPure, meta=(DisplayName = "Bitwise OR", CompactNodeTitle = "|", Keywords = "| or", CommutativeAssociativeBinaryOperator = "true"), Category="Math|Int16")
+	static FInt16_bp Or_Int16Int16(FInt16_bp A, FInt16_bp B);
+
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Bitwise NOT", CompactNodeTitle = "~", Keywords = "~ not"), Category = "Math|Int16")
+	static FInt16_bp Not_Int16(FInt16_bp A);
+
+	UFUNCTION(BlueprintPure, Category="Math|Random", meta=(NotBlueprintThreadSafe))
+	static FInt16_bp RandomInt16(FInt16_bp Max);
+
+	UFUNCTION(BlueprintPure, Category="Math|Random", meta = (NotBlueprintThreadSafe))
+	static FInt16_bp RandomInt16InRange(FInt16_bp Min, FInt16_bp Max);
+
+	UFUNCTION(BlueprintPure, meta=(DisplayName = "Min (int16)", CompactNodeTitle = "MIN", CommutativeAssociativeBinaryOperator = "true"), Category="Math|Int16")
+	static FInt16_bp Min_Int16(FInt16_bp A, FInt16_bp B);
+
+	UFUNCTION(BlueprintPure, meta=(DisplayName = "Max (int16)", CompactNodeTitle = "MAX", CommutativeAssociativeBinaryOperator = "true"), Category="Math|Int16")
+	static FInt16_bp Max_Int16(FInt16_bp A, FInt16_bp B);
+
+	UFUNCTION(BlueprintPure, meta=(DisplayName = "Clamp (int16)"), Category="Math|Int16")
+	static FInt16_bp Clamp_Int16(FInt16_bp Value, FInt16_bp Min, FInt16_bp Max);
+
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "Wrap (int16)", Min = "0", Max = "100"), Category = "Math|Int16")
+	static FInt16_bp Wrap_Int16(FInt16_bp Value, FInt16_bp Min, FInt16_bp Max);
+
+	UFUNCTION(BlueprintPure, meta=(DisplayName = "Absolute (int16)", CompactNodeTitle = "ABS"), Category="Math|Int16")
+	static FInt16_bp Abs_Int16(FInt16_bp A);
 
 	#pragma endregion
 
