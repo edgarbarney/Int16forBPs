@@ -35,12 +35,26 @@ struct FInt16_bp
 		unsigned_integer1 = (uint8((uint16)a & 0x00ff));
 	}
 
-	/* --	Arithmetic Operators	-- */
+	/* --	Binary Operators	-- */
+	
 	FORCEINLINE FInt16_bp operator=(int v)	const
 	{
-		(FInt16_bp)v;
+		return (FInt16_bp)v;
+	}
+	FORCEINLINE uint16 operator=(FInt16_bp v)	const
+	{
+		return (uint16)v;
 	}
 	FORCEINLINE FInt16_bp operator+(FInt16_bp& v)	const
+	{
+		return FInt16_bp
+		{
+			(int)((unsigned_integer2 << 8) | unsigned_integer1)
+			+
+			(int)((v.unsigned_integer2 << 8) | v.unsigned_integer1)
+		};
+	}
+	FORCEINLINE FInt16_bp operator+=(FInt16_bp& v)	const
 	{
 		return FInt16_bp
 		{
@@ -56,6 +70,15 @@ struct FInt16_bp
 			(int)((unsigned_integer2 << 8) | unsigned_integer1)
 			- 
 			(int)((v.unsigned_integer2 << 8) | v.unsigned_integer1) 
+		};
+	}
+	FORCEINLINE FInt16_bp operator-=(FInt16_bp& v)	const
+	{
+		return FInt16_bp
+		{
+			(int)((unsigned_integer2 << 8) | unsigned_integer1)
+			-
+			(int)((v.unsigned_integer2 << 8) | v.unsigned_integer1)
 		};
 	}
 	FORCEINLINE FInt16_bp operator*(FInt16_bp& v)	const
@@ -86,6 +109,98 @@ struct FInt16_bp
 			%
 			(int)((v.unsigned_integer2 << 8) | v.unsigned_integer1)
 		};
+	}
+
+	/* --	Comparison Operators	-- */
+	FORCEINLINE bool operator>(FInt16_bp v)	const
+	{
+		return
+		(
+			(int)((unsigned_integer2 << 8) | unsigned_integer1)
+			>
+			(int)((v.unsigned_integer2 << 8) | v.unsigned_integer1)
+		);
+	}
+	FORCEINLINE bool operator<(FInt16_bp v)	const
+	{
+		return
+		(
+			(int)((unsigned_integer2 << 8) | unsigned_integer1)
+			<
+			(int)((v.unsigned_integer2 << 8) | v.unsigned_integer1)
+		);
+	}
+	FORCEINLINE bool operator<=(FInt16_bp v)	const
+	{
+		return
+		(
+			(int)((unsigned_integer2 << 8) | unsigned_integer1)
+			<=
+			(int)((v.unsigned_integer2 << 8) | v.unsigned_integer1)
+		);
+	}
+	FORCEINLINE bool operator>=(FInt16_bp v)	const
+	{
+		return
+		(
+			(int)((unsigned_integer2 << 8) | unsigned_integer1)
+			>=
+			(int)((v.unsigned_integer2 << 8) | v.unsigned_integer1)
+		);
+	}
+	/* These are built in.
+	* 
+	FORCEINLINE bool operator==(FInt16_bp v)	const
+	{
+		return
+		(
+			(int)((unsigned_integer2 << 8) | unsigned_integer1)
+			!=
+			(int)((v.unsigned_integer2 << 8) | v.unsigned_integer1)
+		);
+	}
+	FORCEINLINE bool operator!=(FInt16_bp v)	const
+	{
+		return
+		(
+			(int)((unsigned_integer2 << 8) | unsigned_integer1)
+			!=
+			(int)((v.unsigned_integer2 << 8) | v.unsigned_integer1)
+		);
+	}
+	*/
+
+	/* --	Bitwise Operators	-- */
+	FORCEINLINE bool operator&(FInt16_bp v)	const
+	{
+		return
+		(
+			(int)((unsigned_integer2 << 8) | unsigned_integer1)
+			&
+			(int)((v.unsigned_integer2 << 8) | v.unsigned_integer1)
+		);
+	}
+	FORCEINLINE bool operator^(FInt16_bp v)	const
+	{
+		return
+		(
+			(int)((unsigned_integer2 << 8) | unsigned_integer1)
+			^
+			(int)((v.unsigned_integer2 << 8) | v.unsigned_integer1)
+		);
+	}
+	FORCEINLINE bool operator|(FInt16_bp v)	const
+	{
+		return
+		(
+			(int)((unsigned_integer2 << 8) | unsigned_integer1)
+			|
+			(int)((v.unsigned_integer2 << 8) | v.unsigned_integer1)
+		);
+	}
+	FORCEINLINE bool operator~()	const
+	{
+		return ~ ( (int)((unsigned_integer2 << 8) | unsigned_integer1) );
 	}
 
 	/* --	Conversion Operators	-- */
