@@ -8,6 +8,7 @@
 
 #pragma region Int16
 
+/*
 int UInt16forBPsBPLibrary::Get16BitInt(FInt16_bp integer16)
 {
 	//return int(259U*unsigned_integer1+unsigned_integer2);
@@ -20,6 +21,7 @@ void UInt16forBPsBPLibrary::Set16BitInt(FInt16_bp& integer16, int int32ToConvert
 	integer16.unsigned_integer2 = main_integer16 >> 8;
 	integer16.unsigned_integer1 = uint8(main_integer16 & 0x00ff);
 }
+*/
 
 int32 UInt16forBPsBPLibrary::Conv_Int16_bpToInt(FInt16_bp integer16)
 {
