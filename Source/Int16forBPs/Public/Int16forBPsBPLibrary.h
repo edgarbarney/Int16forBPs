@@ -2,12 +2,11 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "Net/UnrealNetwork.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "Int16forBPsBPLibrary.generated.h"
 
-USTRUCT(immutable, noexport, BlueprintType)
+USTRUCT(BlueprintType, DisplayName = "Integer16")
 struct FInt16_bp
 {
 	GENERATED_BODY()
@@ -17,24 +16,28 @@ struct FInt16_bp
 	UPROPERTY(VisibleAnywhere)
 	uint8 unsigned_integer2; //Byte
 
-	FORCEINLINE constexpr FInt16_bp()
-		: unsigned_integer2{ }
-		, unsigned_integer1{ }
+	FORCEINLINE FInt16_bp()
 	{
+		unsigned_integer2 = 0;
+		unsigned_integer1 = 0;
 	}
 
-	FORCEINLINE constexpr FInt16_bp(uint8 a, uint8 b)
-		: unsigned_integer2{ a }
-		, unsigned_integer1{ b }
+	FORCEINLINE FInt16_bp(uint8 a, uint8 b)
 	{
+		unsigned_integer2 = a;
+		unsigned_integer1 = b;
 	}
 
-	FORCEINLINE constexpr FInt16_bp(int a)
-		: unsigned_integer2{ ((uint16)a >> 8) }
-		, unsigned_integer1{ (uint8((uint16)a & 0x00ff)) }
+	FORCEINLINE FInt16_bp(int a)
 	{
+		unsigned_integer2 = ((uint16)a >> 8);
+		unsigned_integer1 = (uint8((uint16)a & 0x00ff));
 	}
 
+	FORCEINLINE FInt16_bp operator=(int v)	const
+	{
+		(FInt16_bp)v;
+	}
 	FORCEINLINE FInt16_bp operator+(FInt16_bp& v)	const
 	{
 		return FInt16_bp
@@ -87,26 +90,6 @@ struct FInt16_bp
 	{
 		return (int)((unsigned_integer2 << 8) | unsigned_integer1);
 	}
-
-	FORCEINLINE FInt16_bp(int a)
-	{
-		uint16 main_integer16 = (uint16)a;
-		unsigned_integer2 = (main_integer16 >> 8);
-		unsigned_integer1 = (uint8(main_integer16 & 0x00ff));
-	}
-
-	FORCEINLINE FInt16_bp(uint16 a)
-	{
-		unsigned_integer2 = (a >> 8);
-		unsigned_integer1 = (uint8(a & 0x00ff));
-	}
-
-	FORCEINLINE FInt16_bp(float a)
-	{
-		uint16 main_integer16 = (uint16)a;
-		unsigned_integer2 = (main_integer16 >> 8);
-		unsigned_integer1 = (uint8(main_integer16 & 0x00ff));
-	}
 };
 
 UCLASS()
@@ -114,8 +97,10 @@ class UInt16forBPsBPLibrary : public UBlueprintFunctionLibrary
 {
 	GENERATED_BODY()
 
+	/*
 	static int Get16BitInt(FInt16_bp integer16);
 	static void Set16BitInt(FInt16_bp& integer16, int int32ToConvert);
+	*/
 
 	#pragma region Int16 Arithmetics
 
@@ -141,7 +126,7 @@ class UInt16forBPsBPLibrary : public UBlueprintFunctionLibrary
 	static FInt16_bp int16divideint(FInt16_bp A, int B = 1);
 
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "int16 / int16", CompactNodeTitle = "/", Keywords = "/ divide ", CommutativeAssociativeBinaryOperator = "true"), Category = "Math|Int16")
-	static FInt16_bp int16divideint16(FInt16_bp A, FInt16_bp B = 1);
+	static FInt16_bp int16divideint16(FInt16_bp A, FInt16_bp B);
 
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "int16 * int", CompactNodeTitle = "*", Keywords = "* multiply times"), Category = "Math|Int16")
 	static FInt16_bp int16multiplyint(FInt16_bp A, int B);
@@ -150,7 +135,7 @@ class UInt16forBPsBPLibrary : public UBlueprintFunctionLibrary
 	static FInt16_bp int16multiplyint16(FInt16_bp A, FInt16_bp B);
 
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "% (int16)", CompactNodeTitle = "%", Keywords = "% modulus"), Category = "Math|Int16")
-	static FInt16_bp int16modulus(FInt16_bp A, FInt16_bp B = 1);
+	static FInt16_bp int16modulus(FInt16_bp A, FInt16_bp B);
 
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "% (int16 % int)", CompactNodeTitle = "%", Keywords = "% modulus"), Category = "Math|Int16")
 	static FInt16_bp int16modulusint(FInt16_bp A, int B = 1);
