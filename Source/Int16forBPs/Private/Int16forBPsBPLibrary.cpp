@@ -23,6 +23,21 @@ float UInt16forBPsBPLibrary::Conv_Int16_bpToFloat(FInt16_bp integer16)
 	return (float)integer16;
 }
 
+FIntVector UInt16forBPsBPLibrary::Conv_Int16_bpToIntVector(FInt16_bp InInt)
+{
+	return FIntVector(InInt, InInt, InInt);
+}
+
+bool UInt16forBPsBPLibrary::Conv_Int16_bpToBool(FInt16_bp InInt)
+{
+	return InInt == 0 ? false : true;
+}
+
+uint8 UInt16forBPsBPLibrary::Conv_Int16_bpToByte(FInt16_bp InInt)
+{
+	return (uint8)InInt;
+}
+
 FInt16_bp UInt16forBPsBPLibrary::Conv_FloatToInt16_bp(float floatToConvert)
 {
 	return (FInt16_bp)std::roundf(floatToConvert);
