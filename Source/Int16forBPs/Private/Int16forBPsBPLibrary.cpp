@@ -90,7 +90,7 @@ FInt16_bp UInt16forBPsBPLibrary::Conv_ByteToInt16_bp(uint8 inbyte)
 
 FInt16_bp UInt16forBPsBPLibrary::incrementint16(FInt16_bp A)
 {
-	return A + 1;
+	return FInt16_bp{ A + 1 };
 }
 
 FInt16_bp UInt16forBPsBPLibrary::decrementint16(FInt16_bp A)
@@ -154,22 +154,22 @@ FInt16_bp UInt16forBPsBPLibrary::int16modulusint(FInt16_bp A, int32 B)
 
 bool UInt16forBPsBPLibrary::Less_Int16Int16(FInt16_bp A, FInt16_bp B)
 {
-	return A < B;
+	return (int)A < (int)B;
 }
 
 bool UInt16forBPsBPLibrary::Greater_Int16Int16(FInt16_bp A, FInt16_bp B)
 {
-	return A > B;
+	return (int)A > (int)B;
 }
 
 bool UInt16forBPsBPLibrary::LessEqual_Int16Int16(FInt16_bp A, FInt16_bp B)
 {
-	return A <= B;
+	return (int)A <= (int)B;
 }
 
 bool UInt16forBPsBPLibrary::GreaterEqual_Int16Int16(FInt16_bp A, FInt16_bp B)
 {
-	return A >= B;
+	return (int)A >= (int)B;
 }
 
 bool UInt16forBPsBPLibrary::EqualEqual_Int16Int16(FInt16_bp A, FInt16_bp B)
@@ -184,62 +184,62 @@ bool UInt16forBPsBPLibrary::NotEqual_Int16Int16(FInt16_bp A, FInt16_bp B)
 
 bool UInt16forBPsBPLibrary::InRange_Int16Int16(FInt16_bp Value, FInt16_bp Min, FInt16_bp Max, bool InclusiveMin, bool InclusiveMax)
 {
-	return ((InclusiveMin ? (Value >= Min) : (Value > Min)) && (InclusiveMax ? (Value <= Max) : (Value < Max)));
+	return (((int)InclusiveMin ? ((int)Value >= (int)Min) : ((int)Value > (int)Min)) && ((int)InclusiveMax ? ((int)Value <= (int)Max) : ((int)Value < (int)Max)));
 }
 
 FInt16_bp UInt16forBPsBPLibrary::And_Int16Int16(FInt16_bp A, FInt16_bp B)
 {
-	return A & B;
+	return (int)A & (int)B;
 }
 
 FInt16_bp UInt16forBPsBPLibrary::Xor_Int16Int16(FInt16_bp A, FInt16_bp B)
 {
-	return A ^ B;
+	return (int)A ^ (int)B;
 }
 
 FInt16_bp UInt16forBPsBPLibrary::Or_Int16Int16(FInt16_bp A, FInt16_bp B)
 {
-	return A | B;
+	return (int)A | (int)B;
 }
 
 FInt16_bp UInt16forBPsBPLibrary::Not_Int16(FInt16_bp A)
 {
-	return ~A;
+	return ~(int)A;
 }
 
 FInt16_bp UInt16forBPsBPLibrary::RandomInt16(FInt16_bp A)
 {
-	return FMath::RandHelper(A);
+	return FMath::RandHelper((int)A);
 }
 
 FInt16_bp UInt16forBPsBPLibrary::RandomInt16InRange(FInt16_bp Min, FInt16_bp Max)
 {
-	return FMath::RandRange(Min, Max);
+	return FMath::RandRange((int)Min, (int)Max);
 }
 
 FInt16_bp UInt16forBPsBPLibrary::Min_Int16(FInt16_bp A, FInt16_bp B)
 {
-	return FMath::Min(A, B);
+	return FMath::Min((int)A, (int)B);
 }
 
 FInt16_bp UInt16forBPsBPLibrary::Max_Int16(FInt16_bp A, FInt16_bp B)
 {
-	return FMath::Max(A, B);
+	return FMath::Max((int)A, (int)B);
 }
 
 FInt16_bp UInt16forBPsBPLibrary::Clamp_Int16(FInt16_bp V, FInt16_bp A, FInt16_bp B)
 {
-	return FMath::Clamp(V, A, B);
+	return FMath::Clamp((int)V, (int)A, (int)B);
 }
 
 FInt16_bp UInt16forBPsBPLibrary::Wrap_Int16(FInt16_bp Value, FInt16_bp Min, FInt16_bp Max)
 {
-	return FMath::Wrap((uint16)Value, (uint16)Min, (uint16)Max);
+	return FMath::Wrap((int)Value, (int)Min, (int)Max);
 }
 
 FInt16_bp UInt16forBPsBPLibrary::Abs_Int16(FInt16_bp A)
 {
-	return FMath::Abs((uint16)A);
+	return FMath::Abs((int)A);
 }
 
 #pragma endregion

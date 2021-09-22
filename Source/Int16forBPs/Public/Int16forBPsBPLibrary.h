@@ -34,176 +34,8 @@ struct FInt16_bp
 
 	FORCEINLINE FInt16_bp(int a)
 	{
-		unsigned_integer2 = ((uint16)a >> 8);
-		unsigned_integer1 = (uint8((uint16)a & 0x00ff));
-	}
-
-	/* --	Arithmetic Operators	-- */
-	
-	FORCEINLINE FInt16_bp operator=(int v)	const
-	{
-		return (FInt16_bp)v;
-	}
-	FORCEINLINE uint16 operator=(FInt16_bp v)	const
-	{
-		return (uint16)v;
-	}
-	FORCEINLINE FInt16_bp operator+(FInt16_bp& v)	const
-	{
-		return FInt16_bp
-		{
-			(int)((unsigned_integer2 << 8) | unsigned_integer1)
-			+
-			(int)((v.unsigned_integer2 << 8) | v.unsigned_integer1)
-		};
-	}
-	FORCEINLINE FInt16_bp operator+=(FInt16_bp& v)	const
-	{
-		return FInt16_bp
-		{
-			(int)((unsigned_integer2 << 8) | unsigned_integer1)
-			+
-			(int)((v.unsigned_integer2 << 8) | v.unsigned_integer1)
-		};
-	}
-	FORCEINLINE FInt16_bp operator-(FInt16_bp& v)	const
-	{
-		return FInt16_bp
-		{ 
-			(int)((unsigned_integer2 << 8) | unsigned_integer1)
-			- 
-			(int)((v.unsigned_integer2 << 8) | v.unsigned_integer1) 
-		};
-	}
-	FORCEINLINE FInt16_bp operator-=(FInt16_bp& v)	const
-	{
-		return FInt16_bp
-		{
-			(int)((unsigned_integer2 << 8) | unsigned_integer1)
-			-
-			(int)((v.unsigned_integer2 << 8) | v.unsigned_integer1)
-		};
-	}
-	FORCEINLINE FInt16_bp operator*(FInt16_bp& v)	const
-	{
-		return FInt16_bp
-		{
-			(int)((unsigned_integer2 << 8) | unsigned_integer1) 
-			*
-			(int)((v.unsigned_integer2 << 8) | v.unsigned_integer1)
-		};
-	}
-	FORCEINLINE FInt16_bp operator/(FInt16_bp& v)	const
-	{
-		if ((int)v == 0) return 0;
-		return FInt16_bp
-		{
-			(int)((unsigned_integer2 << 8) | unsigned_integer1)
-			/
-			(int)((v.unsigned_integer2 << 8) | v.unsigned_integer1)
-		};
-	}
-	FORCEINLINE FInt16_bp operator%(FInt16_bp& v)	const
-	{
-		if ((int)v == 0) return 0;
-		return FInt16_bp
-		{
-			(int)((unsigned_integer2 << 8) | unsigned_integer1)
-			%
-			(int)((v.unsigned_integer2 << 8) | v.unsigned_integer1)
-		};
-	}
-
-	/* --	Logical Operators	-- */
-	FORCEINLINE bool operator>(FInt16_bp v)	const
-	{
-		return
-		(
-			(int)((unsigned_integer2 << 8) | unsigned_integer1)
-			>
-			(int)((v.unsigned_integer2 << 8) | v.unsigned_integer1)
-		);
-	}
-	FORCEINLINE bool operator<(FInt16_bp v)	const
-	{
-		return
-		(
-			(int)((unsigned_integer2 << 8) | unsigned_integer1)
-			<
-			(int)((v.unsigned_integer2 << 8) | v.unsigned_integer1)
-		);
-	}
-	FORCEINLINE bool operator<=(FInt16_bp v)	const
-	{
-		return
-		(
-			(int)((unsigned_integer2 << 8) | unsigned_integer1)
-			<=
-			(int)((v.unsigned_integer2 << 8) | v.unsigned_integer1)
-		);
-	}
-	FORCEINLINE bool operator>=(FInt16_bp v)	const
-	{
-		return
-		(
-			(int)((unsigned_integer2 << 8) | unsigned_integer1)
-			>=
-			(int)((v.unsigned_integer2 << 8) | v.unsigned_integer1)
-		);
-	}
-	/* These are built in.
-	* 
-	FORCEINLINE bool operator==(FInt16_bp v)	const
-	{
-		return
-		(
-			(int)((unsigned_integer2 << 8) | unsigned_integer1)
-			!=
-			(int)((v.unsigned_integer2 << 8) | v.unsigned_integer1)
-		);
-	}
-	FORCEINLINE bool operator!=(FInt16_bp v)	const
-	{
-		return
-		(
-			(int)((unsigned_integer2 << 8) | unsigned_integer1)
-			!=
-			(int)((v.unsigned_integer2 << 8) | v.unsigned_integer1)
-		);
-	}
-	*/
-
-	/* --	Bitwise Operators	-- */
-	FORCEINLINE bool operator&(FInt16_bp v)	const
-	{
-		return
-		(
-			(int)((unsigned_integer2 << 8) | unsigned_integer1)
-			&
-			(int)((v.unsigned_integer2 << 8) | v.unsigned_integer1)
-		);
-	}
-	FORCEINLINE bool operator^(FInt16_bp v)	const
-	{
-		return
-		(
-			(int)((unsigned_integer2 << 8) | unsigned_integer1)
-			^
-			(int)((v.unsigned_integer2 << 8) | v.unsigned_integer1)
-		);
-	}
-	FORCEINLINE bool operator|(FInt16_bp v)	const
-	{
-		return
-		(
-			(int)((unsigned_integer2 << 8) | unsigned_integer1)
-			|
-			(int)((v.unsigned_integer2 << 8) | v.unsigned_integer1)
-		);
-	}
-	FORCEINLINE bool operator~()	const
-	{
-		return ~ ( (int)((unsigned_integer2 << 8) | unsigned_integer1) );
+		unsigned_integer2 = uint8(a >> 8);
+		unsigned_integer1 = uint8(a & 0x00ff);
 	}
 
 	/* --	Conversion Operators	-- */
@@ -211,6 +43,13 @@ struct FInt16_bp
 	{
 		return (int)((unsigned_integer2 << 8) | unsigned_integer1);
 	}
+
+	FORCEINLINE void fromInt(int integ)
+	{
+		unsigned_integer2 = uint8(integ >> 8);
+		unsigned_integer1 = uint8(integ & 0x00ff);
+	}
+
 };
 
 UCLASS()
