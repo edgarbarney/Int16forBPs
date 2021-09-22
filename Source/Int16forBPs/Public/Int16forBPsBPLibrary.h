@@ -4,7 +4,10 @@
 
 #include "Net/UnrealNetwork.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
+#include "Engine/GameEngine.h"
 #include "Int16forBPsBPLibrary.generated.h"
+
+#define DEBUG(x) if (GEngine) { GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, x); }
 
 USTRUCT(BlueprintType, DisplayName = "Integer16")
 struct FInt16_bp
@@ -216,6 +219,12 @@ class UInt16forBPsBPLibrary : public UBlueprintFunctionLibrary
 	GENERATED_BODY()
 
 	#pragma region Arithmetic Nodes
+
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Increment Int16", CompactNodeTitle = "++", Keywords = "+ plus"), Category = "Math|Int16")
+	static FInt16_bp incrementint16(FInt16_bp A);
+
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Decrement Int16", CompactNodeTitle = "--", Keywords = "- minus"), Category = "Math|Int16")
+	static FInt16_bp decrementint16(FInt16_bp A);
 
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "int16 + int", CompactNodeTitle = "+", Keywords = "+ plus"), Category = "Math|Int16")
 	static FInt16_bp int16plusint(FInt16_bp A, int32 B);

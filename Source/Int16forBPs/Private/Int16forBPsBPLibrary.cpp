@@ -88,6 +88,16 @@ FInt16_bp UInt16forBPsBPLibrary::Conv_ByteToInt16_bp(uint8 inbyte)
 
 #pragma region Arithmetic Nodes
 
+FInt16_bp UInt16forBPsBPLibrary::incrementint16(FInt16_bp A)
+{
+	return A + 1;
+}
+
+FInt16_bp UInt16forBPsBPLibrary::decrementint16(FInt16_bp A)
+{
+	return A - 1;
+}
+
 FInt16_bp UInt16forBPsBPLibrary::int16plusint(FInt16_bp A, int32 B)
 {
 	return A + (FInt16_bp)B;
