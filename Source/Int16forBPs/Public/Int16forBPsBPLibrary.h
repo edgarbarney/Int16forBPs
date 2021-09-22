@@ -35,7 +35,7 @@ struct FInt16_bp
 		unsigned_integer1 = (uint8((uint16)a & 0x00ff));
 	}
 
-	/* --	Binary Operators	-- */
+	/* --	Arithmetic Operators	-- */
 	
 	FORCEINLINE FInt16_bp operator=(int v)	const
 	{
@@ -111,7 +111,7 @@ struct FInt16_bp
 		};
 	}
 
-	/* --	Comparison Operators	-- */
+	/* --	Logical Operators	-- */
 	FORCEINLINE bool operator>(FInt16_bp v)	const
 	{
 		return
@@ -352,7 +352,7 @@ public:
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "ToInt16 (bool)", CompactNodeTitle = "->", Keywords = "cast convert", BlueprintAutocast), Category = "Math|Int16")
 	static FInt16_bp Conv_BoolToInt16_bp(bool inbool);
 
-	UFUNCTION(BlueprintPure, meta = (DisplayName = "ToInt16 (uint8)", CompactNodeTitle = "->", Keywords = "cast convert", BlueprintAutocast), Category = "Math|Conversions")
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "ToInt16 (byte)", CompactNodeTitle = "->", Keywords = "cast convert", BlueprintAutocast), Category = "Math|Conversions")
 	static FInt16_bp Conv_ByteToInt16_bp(uint8 inint8);
 
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "Make Bytes", CompactNodeTitle = "-<"), Category = "Math|Int16")
