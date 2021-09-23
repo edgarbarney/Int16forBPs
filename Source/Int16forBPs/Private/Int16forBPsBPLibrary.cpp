@@ -6,6 +6,10 @@
 #include <iostream>
 #include <sstream>
 
+//Fix for GCC can't detect STD math functions.
+//Use C maths instead of C++ STD maths
+#include <cmath>
+
 #pragma region Conversion Nodes
 
 int32 UInt16forBPsBPLibrary::Conv_Int16_bpToInt(FInt16_bp integer16)
@@ -45,17 +49,17 @@ FInt16_bp UInt16forBPsBPLibrary::Make16BitInt(uint8 A, uint8 B)
 
 FInt16_bp UInt16forBPsBPLibrary::Conv_FloatToInt16_bp(float floatToConvert)
 {
-	return (FInt16_bp)std::roundf(floatToConvert);
+	return (FInt16_bp)roundf(floatToConvert);
 }
 
 FInt16_bp UInt16forBPsBPLibrary::Conv_FloatToCeilInt16_bp(float floatToConvert)
 {
-	return (FInt16_bp)std::ceilf(floatToConvert);
+	return (FInt16_bp)ceilf(floatToConvert);
 }
 
 FInt16_bp UInt16forBPsBPLibrary::Conv_FloatToFloorInt16_bp(float floatToConvert)
 {
-	return (FInt16_bp)std::floorf(floatToConvert);
+	return (FInt16_bp)floorf(floatToConvert);
 }
 
 FInt16_bp UInt16forBPsBPLibrary::Conv_IntToInt16_bp(int32 int32ToConvert)
