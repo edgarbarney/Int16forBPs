@@ -19,10 +19,12 @@ struct FInt16_bp
 {
 	GENERATED_BODY()
 
+	/**< First byte that creates Int16. */
 	UPROPERTY(VisibleAnywhere)
-	uint8 unsigned_integer1; /**< First byte that creates Int16. */
+	uint8 unsigned_integer1; 
+	/**< Second byte that creates Int16. */
 	UPROPERTY(VisibleAnywhere)
-	uint8 unsigned_integer2; /**< Second byte that creates Int16. */
+	uint8 unsigned_integer2;
 
 	/* --	Consturctors	-- */
 
