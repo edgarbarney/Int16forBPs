@@ -12,7 +12,7 @@
 /** 
 * An implementation of 16 Bit Unsigned Integer - Integer16 for UE4 Blueprints
 * 
-* Mainly for reducing memory and network size by tradin some CPU time.
+* Mainly for reducing memory and network size by trading some CPU time.
 */
 USTRUCT(BlueprintType, DisplayName = "Integer16")
 struct FInt16_bp
