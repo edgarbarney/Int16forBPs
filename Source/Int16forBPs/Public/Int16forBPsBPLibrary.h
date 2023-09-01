@@ -7,7 +7,7 @@
 #include "Engine/GameEngine.h"
 #include "Int16forBPsBPLibrary.generated.h"
 
-#define DEBUG(x) if (GEngine) { GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, x); }
+#define FRAN_DEBUGPRINT(x) if (GEngine) { GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, x); }
 
 /** 
 * An implementation of 16 Bit Unsigned Integer - Integer16 for UE4 Blueprints
@@ -19,35 +19,23 @@ struct FInt16_bp
 {
 	GENERATED_BODY()
 
-	/**< First byte that creates Int16. */
+	/**< First byte that makes an Int16. */
 	UPROPERTY(VisibleAnywhere)
 	uint8 unsigned_integer1; 
-	/**< Second byte that creates Int16. */
+	/**< Second byte that makes an Int16. */
 	UPROPERTY(VisibleAnywhere)
 	uint8 unsigned_integer2;
 
 	/* --	Consturctors	-- */
 
 	/** Constructor for constructing Int16 using an Int32  */
-	FORCEINLINE FInt16_bp()
-	{
-		unsigned_integer2 = 0;
-		unsigned_integer1 = 0;
-	}
+	FORCEINLINE FInt16_bp() : unsigned_integer2(0), unsigned_integer1(0) {}
 
 	/** Constructor for constructing Int16 using two uint8s  */
-	FORCEINLINE FInt16_bp(uint8 a, uint8 b)
-	{
-		unsigned_integer2 = a;
-		unsigned_integer1 = b;
-	}
+	FORCEINLINE FInt16_bp(uint8 a, uint8 b) : unsigned_integer2(a), unsigned_integer1(b) {}
 
 	/** Constructor for constructing Int16 using an Int32  */
-	FORCEINLINE FInt16_bp(int a)
-	{
-		unsigned_integer2 = uint8(a >> 8);
-		unsigned_integer1 = uint8(a & 0x00ff);
-	}
+	FORCEINLINE FInt16_bp(int a) : unsigned_integer2(uint8(a >> 8)), unsigned_integer1(uint8(a & 0x00ff)) {}
 
 	/* --	Conversion Operators	-- */
 
@@ -197,8 +185,10 @@ class UInt16forBPsBPLibrary : public UBlueprintFunctionLibrary
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "Wrap (int16)"), Category = "Math|Int16")
 	static FInt16_bp Wrap_Int16(FInt16_bp Value, FInt16_bp Min, FInt16_bp Max);
 
-	/** Returns the absolute (positive) value of A */
-	UFUNCTION(BlueprintPure, meta=(DisplayName = "Absolute (int16)", CompactNodeTitle = "ABS"), Category="Math|Int16")
+	/** Returns the absolute (positive) value of A 
+	 * Please do not use. This is reserved for future implementations.
+	 */
+	UFUNCTION(BlueprintPure, meta=(DisplayName = "Absolute (int16)", CompactNodeTitle = "ABS", DeprecatedFunction, DeprecationMessage = "Reserved for Future Implementations.\nPlease do not use."), Category="Math|Int16")
 	static FInt16_bp Abs_Int16(FInt16_bp A);
 
 	#pragma endregion
