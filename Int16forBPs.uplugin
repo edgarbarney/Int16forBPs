@@ -2,6 +2,7 @@
 	"FileVersion": 3,
 	"Version": 2,
 	"VersionName": "0.2",
+	"EngineVersion": [ "5.3" ],
 	"FriendlyName": "Int16forBPs",
 	"Description": "16 bit Integer for Blueprints",
 	"Category": "Blueprints",

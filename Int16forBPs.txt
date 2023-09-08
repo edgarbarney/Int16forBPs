@@ -1,0 +1,6 @@
+Int16forBPs
+Engine Version: 5.3
+
+Created by: FranticDreamer
+Github Repo: https://github.com/edgarbarney/Int16forBPs
+Marketplace: https://www.unrealengine.com/marketplace/en-US/product/int16-for-blueprints
